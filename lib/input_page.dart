@@ -16,6 +16,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 182;
+  int weight = 68;
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +117,25 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: Row(
                 children: [
-                  Expanded(child: ReusableCard(colour: kActiveCardColour)),
+                  Expanded(
+                    child: ReusableCard(
+                      cardChild: Column(
+                        children: [
+                          Text('WEIGHT', style: kLabelTextStyle),
+                          Text(weight.toString(), style: kNumberTextStyle),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(icon: FontAwesomeIcons.minus),
+                              SizedBox(width: 10.0),
+                              RoundIconButton(icon: FontAwesomeIcons.plus),
+                            ],
+                          ),
+                        ],
+                      ),
+                      colour: kActiveCardColour,
+                    ),
+                  ),
                   Expanded(child: ReusableCard(colour: kActiveCardColour)),
                 ],
               ),
@@ -129,6 +148,23 @@ class _InputPageState extends State<InputPage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  const RoundIconButton({super.key, required this.icon});
+
+  final IconData icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: () {},
+      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+      child: Icon(icon, color: Colors.white),
     );
   }
 }
