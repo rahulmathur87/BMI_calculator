@@ -17,6 +17,7 @@ class _InputPageState extends State<InputPage> {
   Gender? selectedGender;
   int height = 182;
   int weight = 68;
+  int age = 38;
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +120,7 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Expanded(
                     child: ReusableCard(
-                      cardChild: Column(
+                      cardChild: Column(mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('WEIGHT', style: kLabelTextStyle),
                           Text(weight.toString(), style: kNumberTextStyle),
@@ -150,7 +151,36 @@ class _InputPageState extends State<InputPage> {
                       colour: kActiveCardColour,
                     ),
                   ),
-                  Expanded(child: ReusableCard(colour: kActiveCardColour)),
+                  Expanded(child: ReusableCard(
+                      cardChild: Column(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('AGE', style: kLabelTextStyle),
+                          Text(age.toString(), style: kNumberTextStyle),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.minus,
+                                onPressed: () {
+                                  setState(() {
+                                    age--;
+                                  });
+                                },
+                              ),
+                              SizedBox(width: 10.0),
+                              RoundIconButton(
+                                icon: FontAwesomeIcons.plus,
+                                onPressed: () {
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      colour: kActiveCardColour)),
                 ],
               ),
             ),
