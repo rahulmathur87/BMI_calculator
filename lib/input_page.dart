@@ -120,7 +120,8 @@ class _InputPageState extends State<InputPage> {
                 children: [
                   Expanded(
                     child: ReusableCard(
-                      cardChild: Column(mainAxisAlignment: MainAxisAlignment.center,
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('WEIGHT', style: kLabelTextStyle),
                           Text(weight.toString(), style: kNumberTextStyle),
@@ -151,8 +152,10 @@ class _InputPageState extends State<InputPage> {
                       colour: kActiveCardColour,
                     ),
                   ),
-                  Expanded(child: ReusableCard(
-                      cardChild: Column(mainAxisAlignment: MainAxisAlignment.center,
+                  Expanded(
+                    child: ReusableCard(
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text('AGE', style: kLabelTextStyle),
                           Text(age.toString(), style: kNumberTextStyle),
@@ -180,14 +183,25 @@ class _InputPageState extends State<InputPage> {
                           ),
                         ],
                       ),
-                      colour: kActiveCardColour)),
+                      colour: kActiveCardColour,
+                    ),
+                  ),
                 ],
               ),
             ),
-            Container(
-              color: kBottomContainerColour,
-              height: kBottomContainerHeight,
-              width: double.infinity,
+            TextButton(
+              onPressed: () {  },
+              child: Container(
+                color: kBottomContainerColour,
+                height: kBottomContainerHeight,
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    'CALCULATE',
+                    style: TextStyle(color: Colors.white, fontSize: 30.0),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
