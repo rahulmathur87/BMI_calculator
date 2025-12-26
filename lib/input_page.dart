@@ -3,6 +3,7 @@ import 'reusable_card.dart';
 import 'icon_content.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'constants.dart';
+import 'results_page.dart';
 
 enum Gender { male, female }
 
@@ -18,6 +19,7 @@ class _InputPageState extends State<InputPage> {
   int height = 182;
   int weight = 68;
   int age = 38;
+  double bmi = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -189,8 +191,14 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            TextButton(
-              onPressed: () {  },
+            GestureDetector(
+              onTap: () {
+                bmi = weight/((height/100) * (height/100));
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ResultsPage(userBMI: bmi)),
+                );
+              },
               child: Container(
                 color: kBottomContainerColour,
                 height: kBottomContainerHeight,
