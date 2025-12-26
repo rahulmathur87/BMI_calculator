@@ -193,10 +193,12 @@ class _InputPageState extends State<InputPage> {
             ),
             GestureDetector(
               onTap: () {
-                bmi = weight/((height/100) * (height/100));
+                bmi = weight / ((height / 100) * (height / 100));
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ResultsPage(userBMI: bmi)),
+                  MaterialPageRoute(
+                    builder: (context) => ResultsPage(userBMI: bmi),
+                  ),
                 );
               },
               child: Container(

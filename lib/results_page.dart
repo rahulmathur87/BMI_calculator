@@ -4,8 +4,26 @@ import 'reusable_card.dart';
 
 class ResultsPage extends StatelessWidget {
   final double userBMI;
-
   const ResultsPage({super.key, required this.userBMI});
+  String bmiCategory(double userBmi) {
+    if (userBmi < 18.5) {
+      return "Underweight";
+    } else if (18.5 < userBmi && userBmi < 24.9) {
+      return "Normal";
+    } else {
+      return "Overweight";
+    }
+  }
+
+  String bmiInterpretation(double userBmi) {
+    if (userBmi < 18.5) {
+      return "You need to eat more";
+    } else if (18.5 <= userBmi && userBmi <= 24.9) {
+      return "You are Normal";
+    } else {
+      return "You are fat";
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +39,21 @@ class ResultsPage extends StatelessWidget {
             Expanded(
               child: ReusableCard(
                 cardChild: Column(
-                  children: [Center(child: Text(userBMI.toStringAsFixed(1), style: kNumberTextStyle,))],
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  // crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      bmiCategory(userBMI).toUpperCase(),
+                      style: TextStyle(color: Colors.green),
+                    ),
+                    Center(
+                      child: Text(
+                        userBMI.toStringAsFixed(1),
+                        style: kNumberTextStyle,
+                      ),
+                    ),
+                    Text(bmiInterpretation(userBMI)),
+                  ],
                 ),
                 colour: Color(0xFF1D1E33),
               ),
